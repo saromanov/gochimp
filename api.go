@@ -51,7 +51,7 @@ type ChimpAPI struct {
 // currently supporting json output formats
 func NewMandrill(apiKey string) (*MandrillAPI, error) {
 	u := url.URL{}
-	u.Scheme = "https"
+	u.Scheme = "http"
 	u.Host = mandrill_uri
 	u.Path = mandrill_version
 	return &MandrillAPI{Key: apiKey, endpoint: u.String()}, nil
@@ -66,7 +66,7 @@ var mailchimp_datacenter = regexp.MustCompile("[a-z]+[0-9]+$")
 func NewChimp(apiKey string, https bool) *ChimpAPI {
 	u := url.URL{}
 	if https {
-		u.Scheme = "https"
+		u.Scheme = "http"
 	} else {
 		u.Scheme = "http"
 	}
